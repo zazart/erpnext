@@ -1,57 +1,70 @@
 <div class="frappe-list">
-    <div class="result" style="height: 489px">
+    <div class="result" style="height: 72vh">
         <div class="list-row-container">
             <header class="level list-row-head text-muted">
                 <div class="level-left list-header-subject">
-                    <div class="list-row-col ellipsis list-subject level">
+                    <div class="list-row-col ellipsis list-subject level  ">
                         <span class="level-item select-like">
-                            <input class="list-header-checkbox list-check-all" type="checkbox" title="Select All" />
+                            <input class="list-header-checkbox list-check-all" type="checkbox" title="Select All">
                         </span>
-                        <span class="level-item" data-sort-by="name" title="Click to sort by ID"> ID </span>
+                        <span class="level-item" data-sort-by="name" title="Click to sort by ID">
+                            ID
+                        </span>
                     </div>
-                    <div class="list-row-col ellipsis hidden-xs tag-col hide"><span>Tag</span></div>
-                    <div class="list-row-col ellipsis hidden-xs"><span data-sort-by="module"
+                    <div class="list-row-col ellipsis hidden-xs tag-col hide "><span>Tag</span></div>
+                    <div class="list-row-col ellipsis hidden-xs  "><span data-sort-by="module"
                             title="Click to sort by Module">Module</span></div>
-                    <div class="level-right">
-                    
-                        <span class="list-count" title=""
-                            data-original-title="The count shown is an estimated count. Click here to see the accurate count."
-                            style="cursor: pointer;"><span>20 of 762</span></span>
-                    
-                    </div>
+
                 </div>
                 <div class="level-left checkbox-actions">
                     <div class="level list-subject">
                         <span class="level-item select-like">
-                            <input class="list-header-checkbox list-check-all" type="checkbox" title="Select All" />
+                            <input class="list-header-checkbox list-check-all" type="checkbox" title="Select All">
                         </span>
                         <span class="level-item list-header-meta"></span>
                     </div>
                 </div>
+                <div class="level-right">
 
+                    <span class="list-count" title=""
+                        data-original-title="The count shown is an estimated count. Click here to see the accurate count."
+                        style="cursor: pointer;"><span>20 of 762</span></span>
+                    <span class="level-item list-liked-by-me hidden-xs">
+                        <span title="Liked by me">
+                            <svg class="icon icon-sm like-icon">
+                                <use href="#icon-heart"></use>
+                            </svg>
+                        </span>
+                    </span>
+
+                </div>
             </header>
         </div>
 
-        <div class="freeze flex justify-center align-center text-muted" style="display: none">Loading...</div>
-
+        {% for doctype in doctypes %}
         <div class="list-row-container" tabindex="1">
             <div class="level list-row">
                 <div class="level-left ellipsis">
                     <div class="list-row-col ellipsis list-subject level">
-                        <span class="level-item select-like"><input class="list-row-checkbox" type="checkbox"
-                                data-doctype="DocType" data-name="Bank Account" /></span><span
-                            class="level-item bold ellipsis"><a class="ellipsis" data-doctype="DocType"
-                                data-name="Bank Account" href="/app/doctype/Bank%20Account" title="Bank Account">Bank
-                                Account</a></span>
+                        <span class="level-item select-like">
+                            <input class="list-row-checkbox" type="checkbox" data-doctype="DocType"
+                                data-name="{{ doctype.name }}" />
+                        </span>
+                        <span class="level-item bold ellipsis">
+                            <a class="ellipsis" data-doctype="DocType" data-name="{{ doctype.name }}"
+                                title="{{ doctype.name }}">
+                                {{ doctype.name }}
+                            </a>
+                        </span>
                     </div>
-
                     <div class="list-row-col tag-col hide hidden-xs ellipsis">
                         <div class="tags-empty">-</div>
                     </div>
-
                     <div class="list-row-col ellipsis hidden-xs">
-                        <span class="ellipsis" title="Module: Accounts">
-                            <a class="filterable ellipsis" data-filter="module,=,Accounts"> Accounts </a>
+                        <span class="ellipsis" title="Module: {{ doctype.module }}">
+                            <a class="filterable ellipsis" data-filter="module,=,{{ doctype.module }}">
+                                {{ doctype.module }}
+                            </a>
                         </span>
                     </div>
                 </div>
@@ -61,15 +74,21 @@
                         <div class="hidden-md hidden-xs d-flex">
                 
                         </div>
-                        <span class="modified"><span class="frappe-timestamp  mini" data-timestamp="2025-04-30 16:46:34.179759"
-                                title="30-04-2025 16:46:34">2 h</span></span>
+                        <span class="modified"><span class="frappe-timestamp  mini" data-timestamp="2024-03-23 16:01:26.702078"
+                                title="23-03-2024 16:01:26">1 y</span></span>
                         <span class="comment-count d-flex align-items-center">
                             <svg class="es-icon es-line  icon-sm" style="" aria-hidden="true">
                                 <use class="" href="#es-line-chat-alt"></use>
                             </svg>
                             0
                         </span>
-                        <span class="mx-2"></span>
+                        <span class="mx-2">·</span>
+                        <span class="list-row-like hidden-xs" style="margin-bottom: 1px;">
+                            <span class="like-action not-liked" data-doctype="DocType" data-name="Access Log" data-liked-by=""
+                                title=""><svg class="icon icon-sm like-icon">
+                                    <use href="#icon-heart"></use>
+                                </svg></span>
+                        </span>
                     </div>
                     <div class="level-item visible-xs text-right">
                 
@@ -78,121 +97,29 @@
                 </div>
             </div>
         </div>
-
-        <div class="list-row-container" tabindex="1">
-            <div class="level list-row">
-                <div class="level-left ellipsis">
-                    <div class="list-row-col ellipsis list-subject level">
-                        <span class="level-item select-like"><input class="list-row-checkbox" type="checkbox"
-                                data-doctype="DocType" data-name="Bank Account Subtype" /></span><span
-                            class="level-item bold ellipsis"><a class="ellipsis" data-doctype="DocType"
-                                data-name="Bank Account Subtype" href="/app/doctype/Bank%20Account%20Subtype"
-                                title="Bank Account Subtype">Bank Account Subtype</a></span>
-                    </div>
-
-                    <div class="list-row-col tag-col hide hidden-xs ellipsis">
-                        <div class="tags-empty">-</div>
-                    </div>
-
-                    <div class="list-row-col ellipsis hidden-xs">
-                        <span class="ellipsis" title="Module: Accounts">
-                            <a class="filterable ellipsis" data-filter="module,=,Accounts"> Accounts </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="level-right text-muted ellipsis">
-                
-                    <div class="level-item list-row-activity hidden-xs">
-                        <div class="hidden-md hidden-xs d-flex">
-                
-                        </div>
-                        <span class="modified"><span class="frappe-timestamp  mini" data-timestamp="2025-04-30 16:46:34.179759"
-                                title="30-04-2025 16:46:34">2 h</span></span>
-                        <span class="comment-count d-flex align-items-center">
-                            <svg class="es-icon es-line  icon-sm" style="" aria-hidden="true">
-                                <use class="" href="#es-line-chat-alt"></use>
-                            </svg>
-                            0
-                        </span>
-                        <span class="mx-2"></span>
-                    </div>
-                    <div class="level-item visible-xs text-right">
-                
-                    </div>
-                
-                </div>
-            </div>
-        </div>
-
-        <div class="list-row-container" tabindex="1">
-            <div class="level list-row">
-                <div class="level-left ellipsis">
-                    <div class="list-row-col ellipsis list-subject level">
-                        <span class="level-item select-like"><input class="list-row-checkbox" type="checkbox"
-                                data-doctype="DocType" data-name="Bank Account Type" /></span><span
-                            class="level-item bold ellipsis"><a class="ellipsis" data-doctype="DocType"
-                                data-name="Bank Account Type" href="/app/doctype/Bank%20Account%20Type"
-                                title="Bank Account Type">Bank Account Type</a></span>
-                    </div>
-
-                    <div class="list-row-col tag-col hide hidden-xs ellipsis">
-                        <div class="tags-empty">-</div>
-                    </div>
-
-                    <div class="list-row-col ellipsis hidden-xs">
-                        <span class="ellipsis" title="Module: Accounts">
-                            <a class="filterable ellipsis" data-filter="module,=,Accounts"> Accounts </a>
-                        </span>
-                    </div>
-                </div>
-                <div class="level-right text-muted ellipsis">
-                
-                    <div class="level-item list-row-activity hidden-xs">
-                        <div class="hidden-md hidden-xs d-flex">
-                
-                        </div>
-                        <span class="modified"><span class="frappe-timestamp  mini" data-timestamp="2025-04-30 16:46:34.179759"
-                                title="30-04-2025 16:46:34">2 h</span></span>
-                        <span class="comment-count d-flex align-items-center">
-                            <svg class="es-icon es-line  icon-sm" style="" aria-hidden="true">
-                                <use class="" href="#es-line-chat-alt"></use>
-                            </svg>
-                            0
-                        </span>
-                        <span class="mx-2"></span>
-                    </div>
-                    <div class="level-item visible-xs text-right">
-                
-                    </div>
-                
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
-    <div class="no-result text-muted flex justify-center align-center" style="display: none; height: 683px">
+
+    <div class="no-result text-muted flex justify-center align-center" style="display: none">
         <div class="msg-box no-border">
             <div class="mb-4">
-                <svg class="icon icon-xl" style="stroke: var(--text-light)">
-                    <use href="#icon-small-file"></use>
-                </svg>
+                <svg class="icon icon-xl"><use href="#icon-small-file"></use></svg>
             </div>
             <p>DocType is a Table / Form in the application.</p>
-            <p><button class="btn btn-default btn-sm btn-new-doc hidden-xs">Create your first DocType</button> <button
-                    class="btn btn-primary btn-new-doc visible-xs">Create New</button></p>
+            <p>
+                <button class="btn btn-default btn-sm btn-new-doc hidden-xs">Create your first DocType</button>
+                <button class="btn btn-primary btn-new-doc visible-xs">Create New</button>
+            </p>
         </div>
     </div>
+
     <div class="list-paging-area level">
         <div class="level-left">
             <div class="btn-group mt-2 ml-3">
-                <button type="button" class="btn btn-default btn-sm btn-paging btn-info" data-value="20"
-                    disabled="">20</button>
-
-                <button type="button" class="btn btn-default btn-sm btn-paging" data-value="100">100</button>
-
-                <button type="button" class="btn btn-default btn-sm btn-paging" data-value="500">500</button>
-
-                <button type="button" class="btn btn-default btn-sm btn-paging" data-value="2500">2500</button>
+                <button type="button" class="btn btn-default btn-sm">20</button>
+                <button type="button" class="btn btn-default btn-sm">100</button>
+                <button type="button" class="btn btn-default btn-sm">500</button>
+                <button type="button" class="btn btn-default btn-sm btn-info" disabled>2500</button>
             </div>
         </div>
         <div class="level-right">
